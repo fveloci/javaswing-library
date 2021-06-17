@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Book;
 import model.Client;
@@ -248,6 +249,15 @@ public class View extends javax.swing.JFrame {
         jComboBox3.setSelectedIndex(0);
         idLoanField.setText("");
         status.setText("Estado: inexistente");
+    }
+    
+    public boolean isNullorEmpty(String... strArr){
+        for(String st : strArr){
+            if(st==null || st.equals("")){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -944,18 +954,28 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        try {
-            if(idClientField.getText().equals("")){
-                saveClient();
+        boolean fields = isNullorEmpty(
+                                        nameField.getText(),
+                                        surnameField.getText(),
+                                        dniField.getText(),
+                                        phoneField.getText(),
+                                        addressField.getText());
+        if(!fields){
+            try {
+                if(idClientField.getText().equals("")){
+                    saveClient();
+                }
+                else{
+                    updateClient();
+                }
+                clientSearch.setText("");
+                searchClients("");
+            } catch (Exception e) {
+                System.err.println(e);
             }
-            else{
-                updateClient();
-            }
-            clientSearch.setText("");
-            searchClients("");
-        } catch (Exception e) {
-            System.err.println(e);
-        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debes completar todos los campos");
+        }       
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void dniFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniFieldActionPerformed
@@ -1013,18 +1033,28 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try {
-            if(idField.getText().equals("")){
-                save();
-            }
-            else{
-                update();
-            }
-            bookSearch.setText("");
-            searchBooks("");
-        } catch (Exception e) {
-            System.err.println(e);
+        boolean fields = isNullorEmpty(titleField.getText(),
+                                       pageField.getText(),
+                                       yearField.getText(),
+                                       descriptionField.getText());
+        
+        if(!fields){
+           try {
+                if(idField.getText().equals("")){
+                    save();
+                }
+                else{
+                    update();
+                }
+                bookSearch.setText("");
+                searchBooks("");
+            } catch (Exception e) {
+                System.err.println(e);
+            } 
+        }else{
+            JOptionPane.showMessageDialog(null, "Debes completar todos los campos");
         }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void yearFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearFieldActionPerformed
