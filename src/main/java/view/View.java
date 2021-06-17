@@ -403,6 +403,12 @@ public class View extends javax.swing.JFrame {
 
         jLabel1.setText("Titulo:");
 
+        pageField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pageFieldKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("Paginas:");
 
         jLabel3.setText("Año:");
@@ -410,6 +416,11 @@ public class View extends javax.swing.JFrame {
         yearField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yearFieldActionPerformed(evt);
+            }
+        });
+        yearField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                yearFieldKeyTyped(evt);
             }
         });
 
@@ -586,6 +597,11 @@ public class View extends javax.swing.JFrame {
                 dniFieldActionPerformed(evt);
             }
         });
+        dniField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                dniFieldKeyTyped(evt);
+            }
+        });
 
         jLabel10.setText("Telefono");
 
@@ -615,6 +631,11 @@ public class View extends javax.swing.JFrame {
         phoneField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneFieldActionPerformed(evt);
+            }
+        });
+        phoneField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                phoneFieldKeyTyped(evt);
             }
         });
 
@@ -1096,6 +1117,38 @@ public class View extends javax.swing.JFrame {
         // Clenas inputs in loan
         cleanInputsLoan();
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void pageFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pageFieldKeyTyped
+        // Validate Book page is number
+        char c = evt.getKeyChar();
+        if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_pageFieldKeyTyped
+
+    private void yearFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yearFieldKeyTyped
+        // Validate book year is number
+        char c = evt.getKeyChar();
+        if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_yearFieldKeyTyped
+
+    private void dniFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniFieldKeyTyped
+        // Validate dni in client is number
+        char c = evt.getKeyChar();
+        if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_dniFieldKeyTyped
+
+    private void phoneFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneFieldKeyTyped
+        // Validate phone is number
+        char c = evt.getKeyChar();
+        if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_phoneFieldKeyTyped
 
     /**
      * @param args the command line arguments
