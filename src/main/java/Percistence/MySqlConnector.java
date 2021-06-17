@@ -23,7 +23,7 @@ public class MySqlConnector {
     public static Connection getInstance() throws Exception {
         try {
             if(instance == null) {
-                instance = DriverManager.getConnection("jdbc:mysql://localhost:3306/final", "root", "rootroot") ;
+                instance = DriverManager.getConnection("jdbc:mysql://localhost:3306/final", "root", "") ;
             }
             return instance;
         } catch (Exception e) {
