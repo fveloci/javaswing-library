@@ -24,7 +24,7 @@ public class ClientDao {
         
         Connection connection = MySqlConnector.getInstance();
         Statement stmt = connection.createStatement();
-        String condition = (search != null) ? "WHERE name LIKE '%" +search +"%' or surname LIKE '%"+search+"%' or dni LIKE '%"+search+"'%;" : ";";
+        String condition = (search != null) ? "WHERE name LIKE '%" +search +"%' or surname LIKE '%"+search+"%' or dni LIKE '%"+search+"%';" : ";";
         String query = "SELECT * FROM client " + condition;
         ResultSet rs = stmt.executeQuery(query);
         List<Client> clients = new ArrayList<>();
